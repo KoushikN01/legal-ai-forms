@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Caveat Petition</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="certificate">
+    <header class="cert-header">
+      <h1>CAVEAT PETITION</h1>
+      <p class="court">IN THE HON'BLE HIGH COURT OF KARNATAKA AT BENGALURU</p>
+      <p class="sub">CAVEAT PETITION No. {{ caveat_number }} / {{ year }}</p>
+    </header>
+
+    <section class="section">
+      <h2>Between</h2>
+      <div class="caveat-section">
+        <p><strong>{{ caveator_name }}</strong>, {{ caveator_designation }}, {{ caveator_address }}. <br>…CAVEATOR</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>And</h2>
+      <div class="caveat-section">
+        <p><strong>{{ respondent_name }}</strong>, {{ respondent_designation }}, {{ respondent_address }}. <br>…RESPONDENT</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Memorandum of Caveat Petition</h2>
+      <div class="claim-text">
+        <p>{{ caveat_body }}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Prayer</h2>
+      <div class="prayer-text">
+        <p>{{ prayer_text }}</p>
+      </div>
+    </section>
+
+    <footer class="cert-footer">
+      <div>
+        <p><strong>Place:</strong> Bengaluru</p>
+        <p><strong>Date:</strong> {{ date_today }}</p>
+      </div>
+      <div>
+        <p><strong>Advocate for Caveator</strong></p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

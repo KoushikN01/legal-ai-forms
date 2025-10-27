@@ -1,0 +1,39 @@
+{
+  "id": "complaint",
+  "title": "File Complaint",
+  "description": "Lodge a formal complaint",
+  "fields": [
+    {
+      "id": "complainant_name",
+      "label": "Your Name",
+      "help": "Full name of the complainant",
+      "type": "text",
+      "required": true,
+      "keywords": ["name", "my name", "i am"]
+    },
+    {
+      "id": "complaint_against",
+      "label": "Complaint Against",
+      "help": "Name of the person or entity",
+      "type": "text",
+      "required": true,
+      "keywords": ["against", "complaint against", "against whom"]
+    },
+    {
+      "id": "complaint_details",
+      "label": "Complaint Details",
+      "help": "Detailed description of the complaint",
+      "type": "text",
+      "required": true,
+      "keywords": ["details", "describe", "complaint"]
+    },
+    {
+      "id": "phone",
+      "label": "Phone Number",
+      "help": "Your contact phone number",
+      "type": "phone",
+      "required": true,
+      "keywords": ["phone", "number", "contact"]
+    }
+  ]
+}

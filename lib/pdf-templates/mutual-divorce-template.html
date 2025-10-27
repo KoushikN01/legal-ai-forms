@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mutual Divorce Petition</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="certificate">
+    <header class="cert-header">
+      <h1>MUTUAL DIVORCE PETITION</h1>
+      <p class="court">BEFORE THE HON'BLE FAMILY COURT AT BENGALURU</p>
+      <p class="sub">M.C. No. {{ case_number }}</p>
+    </header>
+
+    <section class="section">
+      <h2>Petitioners</h2>
+      <div class="petitioner-item">
+        <p><strong>1. {{ husband_full_name }}</strong>, Husband, residing at {{ residential_address_husband }}.</p>
+      </div>
+      <div class="petitioner-item">
+        <p><strong>2. {{ wife_full_name }}</strong>, Wife, residing at {{ residential_address_wife }}.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Marriage Details</h2>
+      <div class="claim-text">
+        <p>The marriage between the petitioners was solemnized on {{ marriage_date }} at {{ marriage_place }}.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Reason for Divorce</h2>
+      <div class="petition-body">
+        <p>{{ reason_for_divorce }}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Mutual Agreement</h2>
+      <div class="claim-text">
+        <p>Both parties mutually agree to dissolve their marriage and have been living separately for a considerable period.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Children Details</h2>
+      <div class="claim-text">
+        <p>{{ children || "No children from this marriage." }}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Maintenance Terms</h2>
+      <div class="claim-text">
+        <p>{{ maintenance_terms || "No maintenance terms agreed upon." }}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Prayer</h2>
+      <div class="prayer-text">
+        <p>In view of the above facts, we pray that this Hon'ble Court may be pleased to grant a decree of divorce dissolving the marriage between the petitioners.</p>
+      </div>
+    </section>
+
+    <footer class="cert-footer">
+      <div>
+        <p><strong>Place:</strong> Bengaluru</p>
+        <p><strong>Date:</strong> {{ date_of_affidavit }}</p>
+      </div>
+      <div>
+        <p><strong>Advocate for Petitioners</strong></p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

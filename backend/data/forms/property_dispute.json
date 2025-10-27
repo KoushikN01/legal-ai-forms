@@ -1,0 +1,39 @@
+{
+  "id": "property_dispute",
+  "title": "Property Dispute",
+  "description": "File a property dispute claim",
+  "fields": [
+    {
+      "id": "property_address",
+      "label": "Property Address",
+      "help": "Full address of the property",
+      "type": "text",
+      "required": true,
+      "keywords": ["address", "property", "located at"]
+    },
+    {
+      "id": "dispute_type",
+      "label": "Type of Dispute",
+      "help": "Boundary, ownership, or other",
+      "type": "text",
+      "required": true,
+      "keywords": ["dispute", "boundary", "ownership"]
+    },
+    {
+      "id": "description",
+      "label": "Description",
+      "help": "Detailed description of the dispute",
+      "type": "text",
+      "required": true,
+      "keywords": ["describe", "details", "explain"]
+    },
+    {
+      "id": "pincode",
+      "label": "Pincode",
+      "help": "Postal code of the property",
+      "type": "pincode",
+      "required": true,
+      "keywords": ["pincode", "postal code", "zip"]
+    }
+  ]
+}

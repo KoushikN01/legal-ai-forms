@@ -1,0 +1,90 @@
+@page {
+  size: A4;
+  margin: 25mm 20mm;
+}
+
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  color: #111;
+  background: #fff;
+}
+
+.certificate {
+  border: 8px solid #2f4f8f;
+  padding: 25px 25px 40px;
+  position: relative;
+  background: white;
+}
+
+.certificate::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 3px solid #9db5cc;
+  pointer-events: none;
+}
+
+.cert-header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.cert-header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.cert-header .court {
+  font-size: 13px;
+  margin-top: 6px;
+  color: #333;
+}
+
+.cert-header .sub {
+  font-size: 12px;
+  margin-top: 2px;
+  color: #555;
+}
+
+.section {
+  margin-top: 20px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.section h2 {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.cert-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  font-size: 12px;
+  border-top: 1px solid #ccc;
+  padding-top: 8px;
+}
+
+/* Additional styles for form-specific elements */
+.petitioner-item {
+  margin-bottom: 8px;
+}
+
+.claim-text, .petition-body, .prayer-text {
+  text-align: justify;
+  margin-bottom: 10px;
+}
+
+.caveat-section {
+  margin-bottom: 15px;
+}
+
+.respondent-info {
+  margin-bottom: 10px;
+}

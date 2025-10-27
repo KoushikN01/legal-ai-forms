@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Account Recovery</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+        input { padding: 8px; margin: 5px; width: 200px; }
+        .result { margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Account Recovery Test</h1>
+    
+    <div class="test-section info">
+        <h3>1. Backend Connection Test</h3>
+        <button onclick="testBackendConnection()">Test Backend Connection</button>
+        <div id="backendResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>2. Password Reset Request Test</h3>
+        <input type="email" id="resetEmail" placeholder="Email" value="test@example.com">
+        <br>
+        <button onclick="testPasswordReset()">Test Password Reset Request</button>
+        <div id="resetResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>3. Test with Non-existent Email</h3>
+        <input type="email" id="nonExistentEmail" placeholder="Non-existent Email" value="nonexistent@example.com">
+        <br>
+        <button onclick="testNonExistentEmail()">Test Non-existent Email</button>
+        <div id="nonExistentResult" class="result"></div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:8000';
+        
+        async function testBackendConnection() {
+            const resultDiv = document.getElementById('backendResult');
+            resultDiv.innerHTML = 'Testing...';
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/`, {
+                    method: 'GET',
+                    timeout: 5000
+                });
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = '✅ Backend is running and accessible';
+                    resultDiv.parentElement.className = 'test-section success';
+                } else {
+                    resultDiv.innerHTML = `❌ Backend responded with status: ${response.status}`;
+                    resultDiv.parentElement.className = 'test-section error';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Cannot connect to backend: ${error.message}`;
+                resultDiv.parentElement.className = 'test-section error';
+            }
+        }
+        
+        async function testPasswordReset() {
+            const resultDiv = document.getElementById('resetResult');
+            resultDiv.innerHTML = 'Testing password reset request...';
+            
+            const email = document.getElementById('resetEmail').value;
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/password-reset-request`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `✅ Password reset request successful!<br>
+                        Message: ${result.message || 'Reset link sent'}`;
+                    resultDiv.parentElement.className = 'test-section success';
+                } else {
+                    resultDiv.innerHTML = `❌ Password reset request failed: ${result.detail || 'Unknown error'}`;
+                    resultDiv.parentElement.className = 'test-section error';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Password reset request error: ${error.message}`;
+                resultDiv.parentElement.className = 'test-section error';
+            }
+        }
+        
+        async function testNonExistentEmail() {
+            const resultDiv = document.getElementById('nonExistentResult');
+            resultDiv.innerHTML = 'Testing with non-existent email...';
+            
+            const email = document.getElementById('nonExistentEmail').value;
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/password-reset-request`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `✅ Request processed (security: doesn't reveal if email exists)<br>
+                        Message: ${result.message || 'Reset link sent'}`;
+                    resultDiv.parentElement.className = 'test-section success';
+                } else {
+                    resultDiv.innerHTML = `❌ Request failed: ${result.detail || 'Unknown error'}`;
+                    resultDiv.parentElement.className = 'test-section error';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Request error: ${error.message}`;
+                resultDiv.parentElement.className = 'test-section error';
+            }
+        }
+        
+        // Auto-run backend connection test
+        window.onload = function() {
+            testBackendConnection();
+        };
+    </script>
+</body>
+</html>

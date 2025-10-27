@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Probate Petition</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="certificate">
+    <header class="cert-header">
+      <h1>PROBATE PETITION</h1>
+      <p class="court">BEFORE THE HON'BLE PRL. CITY CIVIL JUDGE AT BENGALURU</p>
+      <p class="sub">P. & S.C. No. {{ case_number }}</p>
+    </header>
+
+    <section class="section applicant">
+      <h2>Petitioners</h2>
+      <div class="petitioner-item">
+        <p><strong>1.</strong> {{ petitioner1_name }}, {{ petitioner1_relation }}, aged {{ petitioner1_age }}, residing at {{ petitioner1_address }}.</p>
+      </div>
+      <div class="petitioner-item">
+        <p><strong>2.</strong> {{ petitioner2_name }}, {{ petitioner2_relation }}, aged {{ petitioner2_age }}, residing at {{ petitioner2_address }}.</p>
+      </div>
+      <div class="petitioner-item">
+        <p><strong>3.</strong> {{ petitioner3_name }}, {{ petitioner3_relation }}, aged {{ petitioner3_age }}, residing at {{ petitioner3_address }}.</p>
+      </div>
+      <div class="petitioner-item">
+        <p><strong>4.</strong> {{ petitioner4_name }}, {{ petitioner4_relation }}, aged {{ petitioner4_age }}, residing at {{ petitioner4_address }}.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Respondents</h2>
+      <p>Nil.</p>
+    </section>
+
+    <section class="section">
+      <h2>Claim</h2>
+      <div class="claim-text">
+        <p>{{ claim_text }}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Petition</h2>
+      <div class="petition-body">
+        <p>{{ petition_body }}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Prayer</h2>
+      <div class="prayer-text">
+        <p>{{ prayer_text }}</p>
+      </div>
+    </section>
+
+    <footer class="cert-footer">
+      <div>
+        <p><strong>Place:</strong> Bengaluru</p>
+        <p><strong>Date:</strong> {{ date_today }}</p>
+      </div>
+      <div>
+        <p><strong>Advocate for Petitioners</strong></p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

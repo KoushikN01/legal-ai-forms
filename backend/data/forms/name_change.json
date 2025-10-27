@@ -1,0 +1,39 @@
+{
+  "_id": "name_change",
+  "title": "Name Change Application",
+  "description": "Apply for a legal name change",
+  "fields": [
+    {
+      "id": "full_name",
+      "label": "Full Name",
+      "help": "Your current full legal name",
+      "type": "text",
+      "required": true,
+      "keywords": ["name is", "my name", "i am"]
+    },
+    {
+      "id": "old_name",
+      "label": "Previous Name",
+      "help": "Your previous legal name",
+      "type": "text",
+      "required": true,
+      "keywords": ["old name", "previous name", "was"]
+    },
+    {
+      "id": "reason",
+      "label": "Reason for Change",
+      "help": "Why you want to change your name",
+      "type": "text",
+      "required": true,
+      "keywords": ["reason", "because", "want to change"]
+    },
+    {
+      "id": "phone",
+      "label": "Phone Number",
+      "help": "Your contact phone number",
+      "type": "tel",
+      "required": true,
+      "keywords": ["phone", "number", "contact"]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Property Dispute Plaint</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="certificate">
+    <header class="cert-header">
+      <h1>PROPERTY DISPUTE PLAINT</h1>
+      <p class="court">BEFORE THE HON'BLE CITY CIVIL JUDGE AT BENGALURU</p>
+      <p class="sub">O.S. No. {{ case_number }}</p>
+    </header>
+
+    <section class="section">
+      <h2>Plaintiff</h2>
+      <div class="petitioner-item">
+        <p><strong>{{ plaintiff_name }}</strong>, residing at {{ plaintiff_address }}.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Defendant</h2>
+      <div class="petitioner-item">
+        <p><strong>{{ defendant_name }}</strong>, residing at {{ defendant_address }}.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Property Description</h2>
+      <div class="claim-text">
+        <p>{{ property_description }}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Nature of Claim</h2>
+      <div class="petitioner-item">
+        <p>The plaintiff is claiming <strong>{{ nature_of_claim }}</strong> of the above-mentioned property.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Value of Claim</h2>
+      <div class="petitioner-item">
+        <p>The value of the claim is ₹{{ value_of_claim }}.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Facts of the Case</h2>
+      <div class="petition-body">
+        <p>{{ facts_of_case }}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Relief Sought</h2>
+      <div class="prayer-text">
+        <p>{{ relief_sought }}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Verification</h2>
+      <div class="claim-text">
+        <p>I, {{ plaintiff_name }}, the plaintiff above named, do hereby verify that the contents of the above plaint are true to the best of my knowledge and belief.</p>
+      </div>
+    </section>
+
+    <footer class="cert-footer">
+      <div>
+        <p><strong>Place:</strong> Bengaluru</p>
+        <p><strong>Date:</strong> {{ date_of_incident }}</p>
+      </div>
+      <div>
+        <p><strong>Advocate for Plaintiff</strong></p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Frontend Authentication</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+        input { padding: 8px; margin: 5px; width: 200px; }
+        .result { margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Frontend Authentication Debug</h1>
+    
+    <div class="test-section info">
+        <h3>1. Backend Connection Test</h3>
+        <button onclick="testBackendConnection()">Test Backend Connection</button>
+        <div id="backendResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>2. Signup Test</h3>
+        <input type="email" id="signupEmail" placeholder="Email" value="test@example.com">
+        <input type="password" id="signupPassword" placeholder="Password" value="testpassword123">
+        <input type="text" id="signupName" placeholder="Name" value="Test User">
+        <input type="tel" id="signupPhone" placeholder="Phone" value="+1234567890">
+        <br>
+        <button onclick="testSignup()">Test Signup</button>
+        <div id="signupResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>3. Signin Test</h3>
+        <input type="email" id="signinEmail" placeholder="Email" value="test@example.com">
+        <input type="password" id="signinPassword" placeholder="Password" value="testpassword123">
+        <br>
+        <button onclick="testSignin()">Test Signin</button>
+        <div id="signinResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>4. Environment Check</h3>
+        <button onclick="checkEnvironment()">Check Environment</button>
+        <div id="envResult" class="result"></div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:8000';
+        
+        async function testBackendConnection() {
+            const resultDiv = document.getElementById('backendResult');
+            resultDiv.innerHTML = 'Testing...';
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/`, {
+                    method: 'GET',
+                    timeout: 5000
+                });
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = '✅ Backend is running and accessible';
+                    resultDiv.parentElement.className = 'test-section success';
+                } else {
+                    resultDiv.innerHTML = `❌ Backend responded with status: ${response.status}`;
+                    resultDiv.parentElement.className = 'test-section error';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Cannot connect to backend: ${error.message}`;
+                resultDiv.parentElement.className = 'test-section error';
+            }
+        }
+        
+        async function testSignup() {
+            const resultDiv = document.getElementById('signupResult');
+            resultDiv.innerHTML = 'Testing signup...';
+            
+            const data = {
+                email: document.getElementById('signupEmail').value,
+                password: document.getElementById('signupPassword').value,
+                name: document.getElementById('signupName').value,
+                phone: document.getElementById('signupPhone').value
+            };
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/signup`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `✅ Signup successful!<br>
+                        User ID: ${result.user?.user_id || 'N/A'}<br>
+                        Token: ${result.token ? result.token.substring(0, 20) + '...' : 'N/A'}`;
+                    resultDiv.parentElement.className = 'test-section success';
+                } else {
+                    resultDiv.innerHTML = `❌ Signup failed: ${result.detail || 'Unknown error'}`;
+                    resultDiv.parentElement.className = 'test-section error';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Signup error: ${error.message}`;
+                resultDiv.parentElement.className = 'test-section error';
+            }
+        }
+        
+        async function testSignin() {
+            const resultDiv = document.getElementById('signinResult');
+            resultDiv.innerHTML = 'Testing signin...';
+            
+            const data = {
+                email: document.getElementById('signinEmail').value,
+                password: document.getElementById('signinPassword').value
+            };
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/signin`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `✅ Signin successful!<br>
+                        User ID: ${result.user_id || 'N/A'}<br>
+                        Token: ${result.token ? result.token.substring(0, 20) + '...' : 'N/A'}`;
+                    resultDiv.parentElement.className = 'test-section success';
+                } else {
+                    resultDiv.innerHTML = `❌ Signin failed: ${result.detail || 'Unknown error'}`;
+                    resultDiv.parentElement.className = 'test-section error';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Signin error: ${error.message}`;
+                resultDiv.parentElement.className = 'test-section error';
+            }
+        }
+        
+        function checkEnvironment() {
+            const resultDiv = document.getElementById('envResult');
+            
+            const checks = [
+                `API Base URL: ${API_BASE_URL}`,
+                `Current URL: ${window.location.href}`,
+                `User Agent: ${navigator.userAgent}`,
+                `CORS Support: ${typeof fetch !== 'undefined' ? 'Yes' : 'No'}`
+            ];
+            
+            resultDiv.innerHTML = checks.join('<br>');
+            resultDiv.parentElement.className = 'test-section info';
+        }
+        
+        // Auto-run backend connection test
+        window.onload = function() {
+            testBackendConnection();
+        };
+    </script>
+</body>
+</html>

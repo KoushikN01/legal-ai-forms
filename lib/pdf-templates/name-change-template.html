@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Name Change Affidavit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="certificate">
+    <header class="cert-header">
+      <h1>NAME CHANGE AFFIDAVIT</h1>
+      <p class="court">BEFORE THE HON'BLE EXECUTIVE MAGISTRATE AT BENGALURU</p>
+      <p class="sub">AFFIDAVIT No. {{ affidavit_number }}</p>
+    </header>
+
+    <section class="section">
+      <h2>I, {{ applicant_full_name }}</h2>
+      <div class="petitioner-item">
+        <p>S/o {{ applicant_father_name }}, aged {{ applicant_age }} years, residing at {{ current_address }}, do hereby solemnly affirm and declare as under:</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>That</h2>
+      <div class="claim-text">
+        <p>I was previously known as <strong>{{ previous_name }}</strong> and I now want to be known as <strong>{{ new_name }}</strong>.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Reason for Change</h2>
+      <div class="petition-body">
+        <p>{{ reason }}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Verification</h2>
+      <div class="claim-text">
+        <p>I hereby declare that the above statement is true to the best of my knowledge and belief and that no part of it is false and nothing material has been concealed therefrom.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Identity Proof</h2>
+      <div class="petitioner-item">
+        <p>I am producing my {{ id_proof_type }} bearing No. {{ id_proof_number }} as proof of my identity.</p>
+      </div>
+    </section>
+
+    <footer class="cert-footer">
+      <div>
+        <p><strong>Place:</strong> {{ place }}</p>
+        <p><strong>Date:</strong> {{ date_of_declaration }}</p>
+      </div>
+      <div>
+        <p><strong>DEPONENT</strong></p>
+        <p>{{ applicant_full_name }}</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

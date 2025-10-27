@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Traffic Fine Appeal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="certificate">
+    <header class="cert-header">
+      <h1>TRAFFIC FINE APPEAL</h1>
+      <p class="court">BEFORE THE HON'BLE TRAFFIC APPELLATE TRIBUNAL AT BENGALURU</p>
+      <p class="sub">Appeal No. {{ case_number }}</p>
+    </header>
+
+    <section class="section">
+      <h2>Appellant</h2>
+      <div class="petitioner-item">
+        <p><strong>{{ appellant_name }}</strong>, residing at {{ appellant_address }}.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Challan Details</h2>
+      <div class="claim-text">
+        <p><strong>Challan Number:</strong> {{ challan_number }}</p>
+        <p><strong>Vehicle Number:</strong> {{ vehicle_number }}</p>
+        <p><strong>Date of Challan:</strong> {{ date_of_challan }}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Offence Details</h2>
+      <div class="petition-body">
+        <p>{{ offence_details }}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Appellant's Explanation</h2>
+      <div class="petition-body">
+        <p>{{ explanation }}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Police Station</h2>
+      <div class="claim-text">
+        <p>{{ police_station || "Not specified" }}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Prayer</h2>
+      <div class="prayer-text">
+        <p>In view of the above facts and circumstances, we pray that this Hon'ble Tribunal may be pleased to set aside the challan and allow this appeal.</p>
+      </div>
+    </section>
+
+    <footer class="cert-footer">
+      <div>
+        <p><strong>Place:</strong> Bengaluru</p>
+        <p><strong>Date:</strong> {{ date_today }}</p>
+      </div>
+      <div>
+        <p><strong>Advocate for Appellant</strong></p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
