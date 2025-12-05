@@ -7,6 +7,8 @@ import { useAuth } from "@/lib/auth-context"
 import { FileText, Calendar, Clock, CheckCircle, XCircle, AlertCircle } from "lucide-react"
 import { getTrackingId, getFormTitle, getFormType, findSubmissionByTrackingId } from "@/lib/tracking-utils"
 
+export const dynamic = 'force-dynamic'
+
 interface SubmissionDetails {
   id: string
   trackingId: string

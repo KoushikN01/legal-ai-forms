@@ -5,6 +5,8 @@ import { useState, useEffect } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Eye, EyeOff } from "lucide-react"
 
+export const dynamic = 'force-dynamic'
+
 export default function ResetPasswordPage() {
   const [newPassword, setNewPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
@@ -54,7 +56,8 @@ export default function ResetPasswordPage() {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/auth/password-reset", {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"
+      const response = await fetch(`${apiUrl}/auth/password-reset`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
