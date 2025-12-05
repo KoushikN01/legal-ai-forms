@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation"
 import Header from "@/components/header"
 import { Globe, Bell, User, Moon, Sun, Save, ArrowLeft } from "lucide-react"
 
+export const dynamic = 'force-dynamic'
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"
 
 export default function SettingsPage() {
@@ -332,7 +334,7 @@ export default function SettingsPage() {
                 </div>
                 <div>
                   <h2 className="text-xl font-bold text-foreground">Account</h2>
-                  <p className="text-sm text-muted-foreground">{user.email}</p>
+                  <p className="text-sm text-muted-foreground">{user?.email || "Loading..."}</p>
                 </div>
               </div>
               <button

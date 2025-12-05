@@ -4,6 +4,8 @@ import { useState } from "react"
 import { useAuth } from "@/lib/auth-context"
 import { useRouter } from "next/navigation"
 
+export const dynamic = 'force-dynamic'
+
 export default function AdminSetupPage() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState("")
@@ -89,8 +91,8 @@ export default function AdminSetupPage() {
           <div className="bg-blue-50 rounded-lg p-4">
             <h3 className="font-semibold text-blue-900 mb-2">Current User</h3>
             <p className="text-sm text-blue-800">
-              <strong>Name:</strong> {user.name}<br/>
-              <strong>Email:</strong> {user.email}
+              <strong>Name:</strong> {user?.name || "Loading..."}<br/>
+              <strong>Email:</strong> {user?.email || "Loading..."}
             </p>
           </div>
 

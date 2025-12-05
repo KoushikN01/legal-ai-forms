@@ -3,6 +3,8 @@
 import { useState } from "react"
 import { useAuth } from "@/lib/auth-context"
 
+export const dynamic = 'force-dynamic'
+
 export default function TestAuthPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -53,11 +55,11 @@ export default function TestAuthPage() {
             <div className="space-y-4">
               <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                 <h3 className="font-semibold text-green-800">Logged In</h3>
-                <p className="text-green-700">Email: {user.email}</p>
-                <p className="text-green-700">Name: {user.name}</p>
-                <p className="text-green-700">ID: {user.id}</p>
-                <p className="text-green-700">Login Method: {user.loginMethod}</p>
-                {user.isAdmin && <p className="text-green-700 font-semibold">Admin User</p>}
+                <p className="text-green-700">Email: {user?.email || "N/A"}</p>
+                <p className="text-green-700">Name: {user?.name || "N/A"}</p>
+                <p className="text-green-700">ID: {user?.id || "N/A"}</p>
+                <p className="text-green-700">Login Method: {user?.loginMethod || "N/A"}</p>
+                {user?.isAdmin && <p className="text-green-700 font-semibold">Admin User</p>}
               </div>
               <button
                 onClick={handleLogout}
